@@ -25,7 +25,7 @@ Describe in detail the Exec[o, t] variable and its function in expressing the op
 - ResourceBalance: Describe how this restriction makes sure that the amount of materials used in all processes doesn't go above what is available.
 - Demand Satisfaction: Describe how this guarantees that operational output either satisfies or surpasses demand.
   
-# 3. TINY Test Cases
+# 3. Test Cases
 ## Develop tiny test cases that are easy to validate:
 
 - Scenario 1: Test only one type of operation, like Make, with minimal data inputs.
@@ -38,14 +38,14 @@ Describe in detail the Exec[o, t] variable and its function in expressing the op
 - Real results: The outcomes that were seen after the model was run.
 - Methods to verify model accuracy by comparing expected and actual results are part of the validation strategy.
   
-# 4. Data Set Submission
+# 4. Data Set
 Prepare the .dat file to reflect the new unified operations approach:
 
 - Update the OPERATIONS Set: Include all operations as defined in the refactoring plan.
 - Adjust Parameters: Ensure all parameters are correctly associated with the new operations.
 - Validate Data: Check for consistency and completeness to ensure the model runs without errors.
   
-# 5. Submit the Results
+# 5. Results
 
 Results Documentation: Include detailed outcomes for each type of operation and overall model performance.
 Comparison with Previous Homework: Ensure the results are consistent with HW 7, providing explanations for any discrepancies.
