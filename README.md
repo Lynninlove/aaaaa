@@ -64,6 +64,7 @@ param offset{OPERATIONS, TIME} default 0;
 
 subject to SupplyConstraint{r in RESOURCE, t in TIME}:
     sum {o in OPERATIONS} Exec[o, t - offset[o, t]] * usage[o, r] <= supply[r, t];
+```
 
 ## Running the Model
 ### Steps
