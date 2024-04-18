@@ -34,7 +34,8 @@ param supply {
 param demand {
     [Store, Mesh, Day1] 20,
     [Store, Fleece, Day1] 10
-};``
+};
+```
 
 ## Dealing with Indices
 
