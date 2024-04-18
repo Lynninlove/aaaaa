@@ -1,74 +1,51 @@
-# Getting Started
+#1. Refactoring Plan and Commentary
+##Refactoring Plan:
 
-You will receive guidance on how to set up your project locally from these instructions. Use the instructions below to launch a clone of the project for testing and development on your local computer.
+- Unify Operations: To simplify the model and adhere to operations management standards, convert the distinct Make, Buy, and Ship variables into a single Exec[o, t] variable type.
+- Build Operations Set: Consolidate Ship-Operations from HAS_DEMAND, Buy-Operations from CAN_BUY, and Make-Operations from BOMs into a single set.
+- Reduce the Complexity of Resource Balance: Include resource stocking and scrapping as processes in the model itself. The limitations are made simpler by this integration, which also more accurately depicts the dynamics of resource management.
+- Backlogging as an Operation: Backlogging may or may not be included as an operation, based on whether the demand is perishable and can wait or can be met right now.
+  
+##Commentary:
 
-## Prerequisites
+- The goal of the refactoring is to make the model structure more straightforward while maintaining an accurate representation of the business's operational intricacies. This method also makes maintenance simpler and better scalable.
+- The initial complexity of comprehending the unified operations model and making sure that all behaviors are maintained without unexpected repercussions are examples of potential risks.
 
-- Java JDK 11 or newer
-- Maven (if not included in your IDE)
-- An IDE (IntelliJ IDEA, Eclipse, VS Code, etc.)
-- Git
+#2. Document Model
+For the AMPL model documentation:
 
-## Installation
+##Header Comment: 
+Summarize the main changes made during the refactoring process as well as the goal of the model.
+##Comments on Sets and Parameters:
+- Explain each set in detail, starting with OPERATIONS and going through Make, Buy, and Ship.
+- Describe each parameter, such as materials_used[o, r], cost[o], and time[o], and what it means in relation to the activities.
+##Variable Documentation:
+Describe in detail the Exec[o, t] variable and its function in expressing the operation's execution level over time.
+##Constraints Explanation:
+- ResourceBalance: Describe how this restriction makes sure that the amount of materials used in all processes doesn't go above what is available.
+- Demand Satisfaction: Describe how this guarantees that operational output either satisfies or surpasses demand.
+  
+#3. TINY Test Cases
+##Develop tiny test cases that are easy to validate:
 
-1. **Clone the repository:**
+- Scenario 1: Test only one type of operation, like Make, with minimal data inputs.
+- Scenario 2: Test a combination of Buy and Ship operations under tight resource constraints.
+- Scenario 3: Test the system's response to a sudden increase in demand, assessing the model’s flexibility.
 
-2. **Open the project in your IDE:**
+##Every test scenario will comprise:
 
-3. **Configure the application:**
+- Anticipated results: Clearly stated using the logic of the model.
+- Real results: The outcomes that were seen after the model was run.
+- Methods to verify model accuracy by comparing expected and actual results are part of the validation strategy.
+  
+#4. Data Set Submission
+Prepare the .dat file to reflect the new unified operations approach:
 
-   Modify the `src/main/resources/application.properties` file to adjust the database and other configurations as necessary. For development, you can use an in-memory database like H2.
+- Update the OPERATIONS Set: Include all operations as defined in the refactoring plan.
+- Adjust Parameters: Ensure all parameters are correctly associated with the new operations.
+- Validate Data: Check for consistency and completeness to ensure the model runs without errors.
+  
+#5. Submit the Results
 
-   ```properties
-   spring.datasource.url=jdbc:h2:mem:testdb
-   spring.datasource.driverClassName=org.h2.Driver
-   spring.datasource.username=sa
-   spring.datasource.password=password
-   spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-
-   # H2 Console
-   spring.h2.console.enabled=true
-   spring.h2.console.path=/h2-console
-   ```
-
-4. **Build the project:**
-
-5. **Run the application:**
-
-
-## Using the Application
-
-### Uploading a CSV File
-
-To upload a CSV file and store data:
-
-1. **Start your Spring Boot application.**
-2. **Use a REST client like Postman to make a POST request:**
-
-   - URL: `http://localhost:8080/api/cells/upload`
-   - Method: POST
-   - Body: form-data
-   - Key: `file`
-   - Value: [Select your CSV file]
-
-   This endpoint will parse and store the cell phone data from the CSV file into the database.
-
-### Retrieving All Cell Phone Records
-
-- **URL**: `http://localhost:8080/api/cells`
-- **Method**: GET
-
-This endpoint retrieves all cell phone records stored in the database.
-
-# API Reference
-
-## Endpoints
-
-- **POST `/api/cells/upload`** - Uploads a CSV file and stores its data.
-- **GET `/api/cells`** - Retrieves all stored cell phone records.
-
-# Built With
-
-- **[Spring Boot](https://spring.io/projects/spring-boot)** - The framework used
-- **[Maven](https://maven.apache.org/)** - Dependency Management
-- **[H2 Database](https://www.h2database.com/html/main.html)** - Used for the in-memory database
+Results Documentation: Include detailed outcomes for each type of operation and overall model performance.
+Comparison with Previous Homework: Ensure the results are consistent with HW 7, providing explanations for any discrepancies.
