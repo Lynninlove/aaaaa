@@ -1,81 +1,52 @@
-## Creating a Tiny Data Set
+## Analysis of Factors Affecting Antelope Fawns Birth
 
-**Purpose:**  
-A tiny data set is essential for testing and debugging the AMPL model without the complexity of full-scale data, ensuring the model behaves as expected under controlled conditions.
+### (a) Response Variable
+The response variable in this study is **"fawns"**.
 
-**Steps:**
+### (b) Multiple Linear Regression Model
 
-1. **Identify Essential Elements:**  
-   Select a small subset of materials, customers, and time periods that cover the core functionalities of your model.
+#### (i) Values of \( k \) and \( n \)
+- \( k \): The number of explanatory variables (adults, rainfall, winter) is 3.
+- \( n \): The number of observations is 8.
 
-2. **Simplify Data Points:**  
-   Reduce the number of operations, resources, and demands to the minimum necessary to test the logic of your model.
+#### (ii) Vectorized Form of the Model
+The regression model can be expressed in a vectorized form as:
+\[ \mathbf{Y} = \mathbf{X}\beta + \boldsymbol{\epsilon} \]
+Where:
+- \( \mathbf{Y} \) is the \( 8 \times 1 \) vector of the dependent variable (fawns).
+- \( \mathbf{X} \) is the \( 8 \times 4 \) matrix of independent variables including a column of ones for the intercept.
+- \( \beta \) is the \( 4 \times 1 \) vector of coefficients \( [\beta_0, \beta_1, \beta_2, \beta_3] \).
+- \( \boldsymbol{\epsilon} \) is the \( 8 \times 1 \) vector of errors, assumed NID(0, \( \sigma^2 \)).
 
-3. **Create Data Entries:**  
-   Include variations that test different parts of your model logic.
+### (c) ANOVA and Linear Model Analysis
 
-**Example Data Entries:**
+#### (i) Coefficients and \( \sigma^2 \)
+- Intercept (\( \beta_0 \)) = -5.92201
+- Adults (\( \beta_1 \)) = 0.33822
+- Rainfall (\( \beta_2 \)) = 0.40150
+- Winter (\( \beta_3 \)) = 0.26295
+- \( \sigma^2 \) (Residual standard error squared): \( 0.1209^2 \)
 
-```AMPL
-data;
-set MATERIAL := Mesh, Fleece;
-set CUSTOMER := Store;
-set TIME := Day1, Day2;
+#### (ii) Multiple R-squared Calculation
+\[ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} \]
 
-param cost := 
-    Mesh 1,
-    Fleece 2;
+#### (iii) F-value and Distribution
+- F-statistic is calculated as \( F = \frac{\text{MSR}}{\text{MSE}} \) where:
+  - MSR (Mean Square Regression) = \( \frac{\text{SSR}}{k} \)
+  - MSE (Mean Square Error) = \( \frac{\text{SSE}}{n-k-1} \)
+- Under \( H_0 \), the F-statistic follows an F-distribution with \( df1 = k \) and \( df2 = n-k-1 \).
 
-param supply {
-    [Mesh, Day1] 50,
-    [Fleece, Day1] 30
-};
+#### (iv) Hypotheses for the F-test
+- \( H_0 \): All \( \beta \) coefficients are zero (no effect).
+- \( H_1 \): At least one \( \beta \) is not zero (effect present).
 
-param demand {
-    [Store, Mesh, Day1] 20,
-    [Store, Fleece, Day1] 10
-};
-```
+#### (v) P-value Conclusion
+- A p-value of 0.001229 indicates significant evidence to reject \( H_0 \), suggesting that factors significantly affect the number of fawns.
 
-## Dealing with Indices
+#### (vi) Prediction for Specific Conditions
+Using the regression model:
+\[ \text{Fawns} = -5.92201 + 0.33822 \times 900 + 0.40150 \times 350 + 0.26295 \times 5 \]
+The predicted number of fawns for the conditions given is approximately \( 440.32 \).
 
-### Approach
-
-- **Define Sets Explicitly:** Ensure all sets such as `MATERIAL`, `CUSTOMER`, and `TIME` are clearly defined in your model. This ensures that every data element is accurately represented and utilized.
-
-- **Use Indices in Parameters and Variables:** Index parameters and variables appropriately to handle different scenarios and data dimensions. This allows the model to process data correctly across various dimensions like time periods, materials, or customer requirements.
-
-## Incorporating an Offset Parameter
-
-### Purpose
-
-- An offset parameter is used to simulate delays or advance periods in operations, affecting resource usage or product delivery timing. This is crucial for models where timing impacts operational efficiency or customer satisfaction.
-
-### Implementation
-
-- **Define Offset:** Create a parameter for offsets that apply to specific operations or time-sensitive actions. This parameter can modify when resources are allocated or when products are delivered.
-
-- **Adjust Constraints:** Incorporate the offset into model constraints to shift operational schedules as necessary.
-
-### Example Implementation
-
-```AMPL
-param offset{OPERATIONS, TIME} default 0;
-
-subject to SupplyConstraint{r in RESOURCE, t in TIME}:
-    sum {o in OPERATIONS} Exec[o, t - offset[o, t]] * usage[o, r] <= supply[r, t];
-```
-
-## Running the Model
-### Steps
-**Load the Model:**
-Use model filename.mod; to load your model file. This prepares the model with all defined sets, parameters, and constraints.
-
-**Load the Data:**
-Use data filename.dat; to load your data file. This imports all necessary data into the model for processing.
-
-**Solve the Model:**
-Use solve; to execute the solver. This command triggers the model to find solutions based on the constraints and objectives set.
-
-**Display Results:**
-Use display Exec; to show the results. This command outputs the values of the Exec variable, which represents the execution levels of operations across different times.
+### Additional Analysis
+If further detailed analysis or explanations of specific sections are required, please let me know!
