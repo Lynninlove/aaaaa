@@ -1,52 +1,39 @@
-## Analysis of Factors Affecting Antelope Fawns Birth
+# 1. Elasticsearch:
+* Thông tin cơ bản:*
+- Elasticsearch được xây dựng dựa trên công nghệ Apache Lucene, là một thư viện tìm kiếm cao cấp. Nó là một phần của Elastic Stack, bao gồm Elasticsearch, Logstash, và Kibana, cùng với Beats.
+- Elasticsearch cho phép lưu trữ, tìm kiếm và phân tích dữ liệu lớn nhanh chóng. Nó thường được sử dụng để hỗ trợ các ứng dụng có khả năng tìm kiếm mạnh mẽ, bao gồm tìm kiếm trang web nội bộ và phân tích log.
+- Elasticsearch có thể mở rộng ngang dễ dàng, hỗ trợ việc phân tán dữ liệu và xử lý qua nhiều nút, giúp tăng khả năng chịu lỗi và khả năng mở rộng.
+- Elasticsearch sử dụng JSON qua HTTP cho việc nhập dữ liệu, cập nhật và truy vấn. Nó hỗ trợ các truy vấn phức tạp, bao gồm cả truy vấn dựa trên cú pháp và tìm kiếm theo khoảng.
+- Ngoài chức năng tìm kiếm, Elasticsearch cũng cung cấp các công cụ phân tích mạnh mẽ, cho phép người dùng hiểu và phân tích dữ liệu của họ một cách sâu sắc.
+- Elasticsearch được sử dụng rộng rãi trong các lĩnh vực như quản lý log hệ thống, phân tích bảo mật, tìm kiếm trang web, và nhiều ứng dụng phân tích dữ liệu khác.
 
-### (a) Response Variable
-The response variable in this study is **"fawns"**.
+* Ưu điểm:* 
+- Hiệu năng cao: Elasticsearch cung cấp khả năng tìm kiếm nhanh chóng và hiệu quả, ngay cả với lượng dữ liệu lớn, nhờ cơ chế lập chỉ mục và tìm kiếm dựa trên Apache Lucene.
+- Khả năng mở rộng ngang: Elasticsearch có thể mở rộng một cách linh hoạt bằng cách thêm nhiều nút vào cluster, giúp cải thiện hiệu năng và khả năng chịu lỗi.
+- Hỗ trợ phân tán: Dữ liệu trong Elasticsearch có thể được tự động phân chia thành nhiều shards khác nhau, và mỗi shard có thể có nhiều bản sao. Điều này giúp cải thiện độ tin cậy và khả năng chịu lỗi.
+- Tích hợp dễ dàng: Elasticsearch hỗ trợ nhiều ngôn ngữ lập trình thông qua các API RESTful, làm cho việc tích hợp vào các ứng dụng hiện có trở nên dễ dàng hơn.
+- Trực quan hóa dữ liệu: Với Kibana, Elasticsearch cho phép người dùng tạo các dashboard trực quan để hiểu sâu hơn về dữ liệu của họ.
+Phân tích thời gian thực: Elasticsearch hỗ trợ phân tích thời gian thực, cho phép người dùng nhận được thông tin ngay lập tức từ dữ liệu của họ.
 
-### (b) Multiple Linear Regression Model
+* Nhược điểm:*
+- Quản lý tài nguyên: Elasticsearch có thể yêu cầu một lượng lớn tài nguyên hệ thống, đặc biệt là RAM, để hoạt động hiệu quả, điều này có thể dẫn đến chi phí cao hơn.
+- Độ phức tạp trong quản lý cluster: Quản lý và tối ưu cluster Elasticsearch, đặc biệt là trong các môi trường sản xuất lớn, có thể rất phức tạp và yêu cầu kiến thức chuyên môn.
+- Cập nhật dữ liệu: Mặc dù Elasticsearch rất nhanh cho việc tìm kiếm, nhưng việc cập nhật dữ liệu (như thêm hoặc sửa đổi dữ liệu) có thể chậm hơn so với các hệ thống cơ sở dữ liệu truyền thống.
+- Phức tạp về transactional: Elasticsearch không phải là lựa chọn tốt nhất cho các ứng dụng yêu cầu giao dịch với tính toàn vẹn và tính nhất quán cao, vì nó không hỗ trợ như các cơ sở dữ liệu quan hệ.
+- Không đa dạng về kiểu định dạng: Elasticsearch không hỗ trợ xử lý request và response bằng nhiều định dạng (chỉ dùng JSON) so với một search engine khác cũng xây dựng dựa trên Lucene như Apache Solr (hỗ trợ JSON, CSV, XML).
+- Cấu hình và tinh chỉnh: Việc tinh chỉnh cấu hình cho hiệu suất tối ưu có thể rất thách thức và yêu cầu sự hiểu biết sâu về cách vận hành của Elasticsearch.
 
-#### (i) Values of \( k \) and \( n \)
-- \( k \): The number of explanatory variables (adults, rainfall, winter) is 3.
-- \( n \): The number of observations is 8.
+* Về bảo mật:*
 
-#### (ii) Vectorized Form of the Model
-The regression model can be expressed in a vectorized form as:
-\[ \mathbf{Y} = \mathbf{X}\beta + \boldsymbol{\epsilon} \]
-Where:
-- \( \mathbf{Y} \) is the \( 8 \times 1 \) vector of the dependent variable (fawns).
-- \( \mathbf{X} \) is the \( 8 \times 4 \) matrix of independent variables including a column of ones for the intercept.
-- \( \beta \) is the \( 4 \times 1 \) vector of coefficients \( [\beta_0, \beta_1, \beta_2, \beta_3] \).
-- \( \boldsymbol{\epsilon} \) is the \( 8 \times 1 \) vector of errors, assumed NID(0, \( \sigma^2 \)).
+** Xác thực và Phân quyền trong Elasticsearch**
+*** Xác thực (Authentication):*** Elasticsearch hỗ trợ các phương thức xác thực nhiều dạng, bao gồm:
+- Basic Authentication: Sử dụng tên người dùng và mật khẩu.
+- API Keys: Cung cấp khóa API cho các dịch vụ và ứng dụng mà không cần tiết lộ tài khoản người dùng chính.
+- SAML, OpenID Connect và Kerberos: Hỗ trợ Single Sign-On (SSO) cho các tổ chức sử dụng các giải pháp xác thực dựa trên chuẩn.
+*** Phân quyền (Authorization):*** Elasticsearch cho phép kiểm soát chi tiết các quyền truy cập đối với dữ liệu và chức năng:
+- Role-Based Access Control (RBAC): Quản lý quyền truy cập dựa trên vai trò của người dùng.
+- Attribute-Based Access Control (ABAC): Điều khiển quyền truy cập dựa trên các thuộc tính của người dùng hoặc tài nguyên.
+- Field- and Document-Level Security: Giới hạn quyền truy cập đến cấp độ trường dữ liệu hoặc tài liệu cụ thể.
+*** Bảo mật tại các lớp:*** Elasticsearch cũng hỗ trợ các cấu hình bảo mật ở tầng vận chuyển và tầng HTTP, như SSL/TLS, để mã hóa dữ liệu truyền giữa các client và server, nhằm bảo vệ chống lại các cuộc tấn công man-in-the-middle.
 
-### (c) ANOVA and Linear Model Analysis
-
-#### (i) Coefficients and \( \sigma^2 \)
-- Intercept (\( \beta_0 \)) = -5.92201
-- Adults (\( \beta_1 \)) = 0.33822
-- Rainfall (\( \beta_2 \)) = 0.40150
-- Winter (\( \beta_3 \)) = 0.26295
-- \( \sigma^2 \) (Residual standard error squared): \( 0.1209^2 \)
-
-#### (ii) Multiple R-squared Calculation
-\[ R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} \]
-
-#### (iii) F-value and Distribution
-- F-statistic is calculated as \( F = \frac{\text{MSR}}{\text{MSE}} \) where:
-  - MSR (Mean Square Regression) = \( \frac{\text{SSR}}{k} \)
-  - MSE (Mean Square Error) = \( \frac{\text{SSE}}{n-k-1} \)
-- Under \( H_0 \), the F-statistic follows an F-distribution with \( df1 = k \) and \( df2 = n-k-1 \).
-
-#### (iv) Hypotheses for the F-test
-- \( H_0 \): All \( \beta \) coefficients are zero (no effect).
-- \( H_1 \): At least one \( \beta \) is not zero (effect present).
-
-#### (v) P-value Conclusion
-- A p-value of 0.001229 indicates significant evidence to reject \( H_0 \), suggesting that factors significantly affect the number of fawns.
-
-#### (vi) Prediction for Specific Conditions
-Using the regression model:
-\[ \text{Fawns} = -5.92201 + 0.33822 \times 900 + 0.40150 \times 350 + 0.26295 \times 5 \]
-The predicted number of fawns for the conditions given is approximately \( 440.32 \).
-
-### Additional Analysis
-If further detailed analysis or explanations of specific sections are required, please let me know!
+Note: Tính năng bảo mật trên chỉ được cung cấp với các pack mất phí và các bản miễn phí không được cung cấp
