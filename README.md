@@ -79,3 +79,25 @@ Cung cấp tính năng bảo mật như xác thực và phân quyền qua các m
 
 - RDBMS: Hỗ trợ đầy đủ các transactions ACID, đảm bảo tính toàn vẹn và nhất quán của dữ liệu.
 Tính năng bảo mật mạnh mẽ, hỗ trợ nhiều cấp độ phân quyền và kiểm soát truy cập.
+
+## Sơ lược về Logstash và Kibana
+
+### Logstash
+Logstash là một công cụ xử lý dữ liệu máy chủ mạnh mẽ, được thiết kế để thu thập, xử lý và chuyển tiếp dữ liệu vào các kho lưu trữ như Elasticsearch. Nó là một phần của Elastic Stack, được sử dụng chủ yếu để tích hợp dữ liệu.
+
+*Các đặc điểm nổi bật của Logstash:*
+- Thu thập Dữ liệu: Logstash có khả năng thu thập dữ liệu từ nhiều nguồn khác nhau, bao gồm hệ thống tệp, thiết bị lưu trữ, và giao diện mạng.
+- Đa dạng input: Hỗ trợ nhiều loại ninput, bao gồm tệp, syslog, redis, và nhiều hơn nữa.
+- Filter: Cung cấp các bộ lọc mạnh mẽ để biến đổi dữ liệu khi được xử lý, ví dụ như thay đổi dữ liệu dựa trên nội dung, loại bỏ thông tin không cần thiết, thêm trường dữ liệu mới, và phân tích cú pháp các định dạng dữ liệu phức tạp.
+- Output: Có thể chuyển dữ liệu đã xử lý đến một hoặc nhiều điểm đích, chẳng hạn như Elasticsearch, file, datadog, graphite, và nhiều hệ thống khác.
+- Plugin: Có một hệ thống plugin phong phú, cho phép mở rộng chức năng mà không cần sửa đổi mã nguồn cốt lõi của Logstash.
+
+### Kibana
+Kibana là một công cụ trực quan hóa và quản lý dữ liệu cho Elasticsearch. Nó cho phép người dùng tạo và quản lý các dashboard để phân tích dữ liệu được lưu trong Elasticsearch.
+
+*Các đặc điểm nổi bật của Kibana:*
+- Trực quan hóa Dữ liệu: Kibana cung cấp một loạt các loại biểu đồ, bảng, và bản đồ để trực quan hóa dữ liệu, bao gồm biểu đồ cột, biểu đồ dòng, biểu đồ tròn, bản đồ nhiệt và nhiều hơn nữa.
+- Tìm kiếm và Phân tích: Cho phép tạo và quản lý các truy vấn phức tạp, phân tích và khám phá dữ liệu trong thời gian thực.
+- Dashboard: Người dùng có thể tạo các dashboard tùy chỉnh bằng cách sử dụng các thành phần trực quan khác nhau, giúp cung cấp cái nhìn tổng quan và sâu sắc về dữ liệu.
+- Quản lý Elasticsearch: Kibana cũng bao gồm các công cụ quản lý cho Elasticsearch, như quản lý chỉ mục, cấu hình nút, và kiểm tra trạng thái cluster.
+- Dev Tools: Kibana cung cấp các công cụ dành cho nhà phát triển để thử nghiệm truy vấn và xem các tài liệu Elasticsearch.
