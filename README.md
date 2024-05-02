@@ -1,4 +1,5 @@
 # 1. Elasticsearch:
+
 ## Thông tin cơ bản:
 - Elasticsearch được xây dựng dựa trên công nghệ Apache Lucene, là một thư viện tìm kiếm cao cấp. Nó là một phần của Elastic Stack, bao gồm Elasticsearch, Logstash, và Kibana, cùng với Beats.
 - Elasticsearch cho phép lưu trữ, tìm kiếm và phân tích dữ liệu lớn nhanh chóng. Nó thường được sử dụng để hỗ trợ các ứng dụng có khả năng tìm kiếm mạnh mẽ, bao gồm tìm kiếm trang web nội bộ và phân tích log.
@@ -107,3 +108,22 @@ Kibana là một công cụ hiển thị trực quan và khám phá dữ liệu 
 ## Tham khảo cài đặt cấu hình và sử dụng:
 - https://viblo.asia/p/elasticsearch-kibana-logstash-tong-quan-cai-dat-va-su-dung-RQqKLRn6l7z
 - https://viblo.asia/p/tich-hop-elasticsearch-va-kibana-vao-docker-compose-Az45bymqlxY
+
+# 2. Elastic Observability:
+
+## Thông tin cơ bản:
+Elastic Observability là một phần của bộ công cụ Elastic Stack, được thiết kế để cung cấp một giải pháp toàn diện về quan sát, phân tích và theo dõi các hệ thống và ứng dụng. Elastic Observability kết hợp các dữ liệu từ logs, metrics, và traces để cung cấp cái nhìn toàn cảnh và sâu sắc về hiệu suất và trạng thái của cả hạ tầng IT và các ứng dụng kinh doanh. Đây là một công cụ hữu ích cho các nhóm DevOps, SRE (Site Reliability Engineering) và IT operations để theo dõi và giải quyết các vấn đề hệ thống.
+
+## Các Thành Phần Chính tạo lên Elastic Observability
+- **Elasticsearch:** Là trung tâm lưu trữ và phân tích dữ liệu, Elasticsearch cho phép quản lý và truy xuất dữ liệu logs, metrics, và traces một cách hiệu quả.
+- **Beats:** Là một nhóm các nhà thu thập dữ liệu nhẹ, mỗi loại Beat có chức năng thu thập dữ liệu đặc thù từ các nguồn khác nhau. Ví dụ, Filebeat thu thập log files, Metricbeat thu thập metrics từ hệ thống và các ứng dụng, Packetbeat phân tích lưu lượng mạng, và Heartbeat để kiểm tra tính khả dụng của dịch vụ.
+- **APM Server:** Là một phần mềm giám sát hiệu suất ứng dụng, nó thu thập dữ liệu từ các ứng dụng và gửi chúng đến Elasticsearch. Điều này cho phép người dùng theo dõi các yêu cầu của ứng dụng, phản ứng từ cơ sở dữ liệu và gọi dịch vụ bên ngoài.
+- **Kibana:** Được sử dụng để trực quan hóa và phân tích dữ liệu thu thập được. Kibana cung cấp dashboards sẵn có và khả năng tùy chỉnh mạnh mẽ, cho phép người dùng tạo ra các biểu đồ, bản đồ nhiệt và báo cáo tùy biến dựa trên dữ liệu thu được.
+- 
+## Tính Năng của Elastic Observability
+- **Unified View:** Tập hợp dữ liệu từ logs, metrics và APM traces để cung cấp cái nhìn toàn diện về hệ thống. Điều này giúp nhận diện nhanh chóng nguyên nhân gốc rễ của các vấn đề.
+- **Real-time Monitoring and Alerting:** Cho phép thiết lập các cảnh báo dựa trên các điều kiện cụ thể. Người dùng có thể được thông báo ngay lập tức khi có sự kiện quan trọng hoặc khi hệ thống hoạt động không như mong đợi.
+- **Scalability:** Hệ thống có khả năng mở rộng cao, phù hợp cho cả doanh nghiệp nhỏ lẫn các tổ chức lớn. Elastic Observability có thể xử lý lượng dữ liệu lớn từ nhiều nguồn khác nhau một cách hiệu quả.
+- **Troubleshooting and Root Cause Analysis:** Cung cấp các công cụ để phân tích sâu và xác định nguyên nhân của các sự cố, từ đó giúp giảm thời gian để giải quyết vấn đề.
+- **Integration and Extensibility:** Dễ dàng tích hợp với nhiều công nghệ và dịch vụ khác, bao gồm cloud services, containers và orchestration platforms như Kubernetes, cho phép quản lý và giám sát trong một môi trường đa dạng.
+**Elastic Observability** là một giải pháp mạnh mẽ cho việc giám sát và quản lý hiệu suất ứng dụng và hệ thống, giúp các tổ chức duy trì sự ổn định và hiệu quả của hạ tầng CNTT.
