@@ -179,6 +179,7 @@ Beats là một bộ sưu tập các data shippers đơn giản mà bạn có th
 **Trực quan hóa và báo cáo:**
 - Dashboards: Các dashboard được tạo sẵn và khả năng tùy chỉnh cao cho phép người dùng trực quan hóa các dữ liệu an ninh và phân tích xu hướng.
 - Reporting: Cung cấp báo cáo định kỳ và tự động về tình hình an ninh, giúp các tổ chức tuân thủ các quy định và tiêu chuẩn an ninh.
+  
 **Quản lý và tích hợp:**
 - Role-based access control (RBAC): Đảm bảo rằng chỉ những người dùng được phép mới có thể truy cập vào dữ liệu và công cụ quan trọng.
 - APIs and integration: Dễ dàng tích hợp với các hệ thống an ninh khác và các công nghệ thông tin để mở rộng khả năng phòng thủ.
