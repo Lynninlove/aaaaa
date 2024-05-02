@@ -159,3 +159,28 @@ Beats là một bộ sưu tập các data shippers đơn giản mà bạn có th
 
 ## Tài liệu tham khảo:
 - https://viblo.asia/p/elastic-stack-xay-dung-trien-khai-giam-sat-va-quan-ly-tap-trung-request-logs-theo-kien-truc-microservices-RnB5pAnDKPG
+
+# 3. Elastic Security
+**Elastic Security** là một giải pháp toàn diện được thiết kế để phát hiện, điều tra và phản hồi trước các mối đe dọa an ninh mạng trong thời gian thực. Nó là một phần của Elastic Stack và hợp nhất các chức năng của SIEM (Security Information and Event Management) và EDR (Endpoint Detection and Response) để cung cấp bảo mật mở rộng từ các điểm cuối đến các mạng và điện toán đám mây.
+
+*Các tính năng chính của Elastic Security:*
+**Tích hợp dữ liệu an ninh:** 
+- Thu thập dữ liệu đa nguồn: Elastic Security có thể tích hợp dữ liệu từ logs, metrics, network traffic, và các endpoint, tạo nên một hệ thống phòng thủ chắc chắn.
+- Normalization: Dữ liệu từ nhiều nguồn khác nhau được chuẩn hóa để dễ dàng phân tích và truy vấn.
+
+**Phát hiện mối đe dọa:**
+- Phát hiện dựa trên quy tắc và hành vi: Sử dụng một bộ sưu tập lớn các quy tắc phát hiện được cập nhật liên tục để nhận diện mối đe dọa dựa trên các dấu hiệu đã biết và các hoạt động bất thường.
+- Machine learning: Phát hiện các hành vi bất thường và bất thường trong dữ liệu an ninh, giúp xác định các mối đe dọa tiềm ẩn mà không bị giới hạn bởi các định nghĩa mối đe dọa trước.
+
+**Điều tra và phản hồi:**
+- Timeline Investigation: Người dùng có thể tương tác với dữ liệu sự kiện để nhanh chóng xác định và truy xuất nguồn gốc của một mối đe dọa.
+- Automated response: Tích hợp với các công cụ và script để tự động hóa các phản hồi an ninh, giúp giảm thiểu thời gian phản hồi và giảm tải cho các nhóm an ninh.
+  
+**Trực quan hóa và báo cáo:**
+- Dashboards: Các dashboard được tạo sẵn và khả năng tùy chỉnh cao cho phép người dùng trực quan hóa các dữ liệu an ninh và phân tích xu hướng.
+- Reporting: Cung cấp báo cáo định kỳ và tự động về tình hình an ninh, giúp các tổ chức tuân thủ các quy định và tiêu chuẩn an ninh.
+**Quản lý và tích hợp:**
+- Role-based access control (RBAC): Đảm bảo rằng chỉ những người dùng được phép mới có thể truy cập vào dữ liệu và công cụ quan trọng.
+- APIs and integration: Dễ dàng tích hợp với các hệ thống an ninh khác và các công nghệ thông tin để mở rộng khả năng phòng thủ.
+  
+**Elastic Security** được thiết kế để hoạt động trên môi trường đám mây, tại chỗ và hybrid, đảm bảo linh hoạt và phù hợp với nhiều kiến trúc công nghệ. Nó là một phần quan trọng trong việc giúp các tổ chức phòng thủ chủ động chống lại các mối đe dọa an ninh mạng, giảm thiểu rủi ro và bảo vệ tài sản kỹ thuật số.
