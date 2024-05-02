@@ -83,7 +83,9 @@ Tính năng bảo mật mạnh mẽ, hỗ trợ nhiều cấp độ phân quyề
 ## Sơ lược về Logstash và Kibana
 
 ### Logstash
-Logstash là một công cụ xử lý dữ liệu máy chủ mạnh mẽ, được thiết kế để thu thập, xử lý và chuyển tiếp dữ liệu vào các kho lưu trữ như Elasticsearch. Nó là một phần của Elastic Stack, được sử dụng chủ yếu để tích hợp dữ liệu.
+Logstash là một công cụ tải nhập dữ liệu nguồn mở cho phép bạn thu thập dữ liệu từ các nguồn khác nhau, chuyển đổi dữ liệu và gửi dữ liệu tới điểm đích bạn muốn. Với các bộ lọc được tạo sẵn và hỗ trợ hơn 200 phần bổ trợ, Logstash cho phép người dùng dễ dàng tải nhập dữ liệu đến từ bất kỳ nguồn dữ liệu hay thuộc loại dữ liệu nào. 
+
+Logstash là một quy trình xử lý dữ liệu phía máy chủ, nguồn mở, gọn nhẹ cho phép bạn thu nhập dữ liệu từ các nguồn khác nhau, chuyển đổi dữ liệu nhanh chóng và gửi dữ liệu tới điểm đích bạn muốn. Logstash thường được sử dụng như một đường ống dữ liệu cho Elasticsearch, một công cụ phân tích và tìm kiếm nguồn mở. Bởi vì được tích hợp chặt chẽ với Elasticsearch, khả năng xử lý bản ghi mạnh mẽ và hơn 200 phần bổ trợ nguồn mở được tạo sẵn có thể giúp bạn dễ dàng lập chỉ mục cho dữ liệu của mình, Logstash là một lựa chọn phổ biến cho hoạt động tải dữ liệu vào Elasticsearch.
 
 *Các đặc điểm nổi bật của Logstash:*
 - Thu thập Dữ liệu: Logstash có khả năng thu thập dữ liệu từ nhiều nguồn khác nhau, bao gồm hệ thống tệp, thiết bị lưu trữ, và giao diện mạng.
@@ -93,7 +95,7 @@ Logstash là một công cụ xử lý dữ liệu máy chủ mạnh mẽ, đư�
 - Plugin: Có một hệ thống plugin phong phú, cho phép mở rộng chức năng mà không cần sửa đổi mã nguồn cốt lõi của Logstash.
 
 ### Kibana
-Kibana là một công cụ trực quan hóa và quản lý dữ liệu cho Elasticsearch. Nó cho phép người dùng tạo và quản lý các dashboard để phân tích dữ liệu được lưu trong Elasticsearch.
+Kibana là một công cụ hiển thị trực quan và khám phá dữ liệu được sử dụng trong những trường hợp phân tích nhật ký và chuỗi thời gian, giám sát ứng dụng và thông tin kinh doanh. Công cụ này cung cấp những tính năng mạnh mẽ, dễ sử dụng như biểu đồ tần suất, biểu đồ đường, biểu đồ tròn, biểu đồ nhiệt và hỗ trợ không gian địa lý được tích hợp sẵn. Ngoài ra, công cụ này còn cung cấp khả năng tích hợp chặt chẽ với Elasticsearch, một công cụ phân tích và tìm kiếm phổ biến, khiến Kibana trở thành lựa chọn hàng đầu cho hoạt động hiển thị trực quan dữ liệu được lưu trữ trong Elasticsearch.
 
 *Các đặc điểm nổi bật của Kibana:*
 - Trực quan hóa Dữ liệu: Kibana cung cấp một loạt các loại biểu đồ, bảng, và bản đồ để trực quan hóa dữ liệu, bao gồm biểu đồ cột, biểu đồ dòng, biểu đồ tròn, bản đồ nhiệt và nhiều hơn nữa.
@@ -101,3 +103,6 @@ Kibana là một công cụ trực quan hóa và quản lý dữ liệu cho Elas
 - Dashboard: Người dùng có thể tạo các dashboard tùy chỉnh bằng cách sử dụng các thành phần trực quan khác nhau, giúp cung cấp cái nhìn tổng quan và sâu sắc về dữ liệu.
 - Quản lý Elasticsearch: Kibana cũng bao gồm các công cụ quản lý cho Elasticsearch, như quản lý chỉ mục, cấu hình nút, và kiểm tra trạng thái cluster.
 - Dev Tools: Kibana cung cấp các công cụ dành cho nhà phát triển để thử nghiệm truy vấn và xem các tài liệu Elasticsearch.
+
+## Tham khảo cài đặt cấu hình và sử dụng:
+- https://viblo.asia/p/tich-hop-elasticsearch-va-kibana-vao-docker-compose-Az45bymqlxY
