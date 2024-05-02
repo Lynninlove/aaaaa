@@ -37,3 +37,45 @@ Phân quyền (Authorization): Elasticsearch cho phép kiểm soát chi tiết c
 Bảo mật tại các lớp: Elasticsearch cũng hỗ trợ các cấu hình bảo mật ở tầng vận chuyển và tầng HTTP, như SSL/TLS, để mã hóa dữ liệu truyền giữa các client và server, nhằm bảo vệ chống lại các cuộc tấn công man-in-the-middle.
 
 Note: Tính năng bảo mật trên chỉ được cung cấp với các pack mất phí và các bản miễn phí không được cung cấp
+
+## So sánh với RDBMS:
+
+### a. Mục đích và Khả năng
+
+- Elasticsearch: Được thiết kế chủ yếu cho các ứng dụng tìm kiếm và phân tích dữ liệu với khả năng xử lý và trả về kết quả gần như thời gian thực.
+Tốt cho việc xử lý dữ liệu không có cấu trúc hoặc bán cấu trúc, như văn bản, log và dữ liệu đa phương tiện.
+
+- RDBMS: Được thiết kế để xử lý các giao dịch có tính toàn vẹn và nhất quán cao, sử dụng mô hình dữ liệu quan hệ.
+Phù hợp với các ứng dụng yêu cầu tính toàn vẹn dữ liệu, hỗ trợ các giao dịch ACID (Atomicity, Consistency, Isolation, Durability) và bảo mật cao.
+
+### b. Cấu trúc Dữ liệu
+
+- Elasticsearch: Dữ liệu được chỉ mục theo cách tối ưu cho tìm kiếm nhanh. Sử dụng các chỉ mục đảo ngược để cải thiện hiệu quả tìm kiếm.
+Không có cấu trúc dữ liệu quan hệ chặt chẽ, và không hỗ trợ truy vấn phức tạp như join giữa các bảng.
+
+- RDBMS: Dữ liệu được tổ chức thành bảng và các mối quan hệ được xác định rõ ràng thông qua khóa ngoại.
+Hỗ trợ truy vấn dữ liệu phức tạp, bao gồm các thao tác như joins, subqueries, và các hàm tập hợp.
+
+### c. Khả năng Mở rộng
+
+- Elasticsearch: Mở rộng ngang dễ dàng, phù hợp cho việc xử lý khối lượng dữ liệu lớn và phân tán trên nhiều máy chủ.
+Tối ưu cho việc đọc dữ liệu, nhưng việc cập nhật và xóa có thể không hiệu quả bằng.
+
+- RDBMS: Mở rộng theo chiều dọc, thường đòi hỏi phần cứng mạnh hơn khi dữ liệu tăng lên.
+Hiệu quả cho việc cập nhật và xử lý giao dịch, nhưng có thể gặp khó khăn trong việc mở rộng ngang khi dữ liệu tăng lớn.
+
+### d. Truy vấn và Phân tích
+
+- Elasticsearch: Tối ưu cho các truy vấn tìm kiếm full-text và phân tích dữ liệu thời gian thực.
+Hỗ trợ các truy vấn phức tạp dựa trên dữ liệu text và cung cấp kết quả gần như ngay lập tức.
+
+- RDBMS: Hỗ trợ truy vấn SQL, một ngôn ngữ truy vấn mạnh mẽ và phổ biến, cho phép truy vấn dữ liệu chính xác và đa dạng.
+Không chuyên cho tìm kiếm full-text và có thể cần các extension hoặc công cụ bên ngoài để cải thiện khả năng này.
+
+### e. Transaction và Bảo mật
+
+- Elasticsearch: Không hỗ trợ các transactions ACID truyền thống.
+Cung cấp tính năng bảo mật như xác thực và phân quyền qua các mô-đun như X-Pack.
+
+- RDBMS: Hỗ trợ đầy đủ các transactions ACID, đảm bảo tính toàn vẹn và nhất quán của dữ liệu.
+Tính năng bảo mật mạnh mẽ, hỗ trợ nhiều cấp độ phân quyền và kiểm soát truy cập.
