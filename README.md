@@ -119,11 +119,43 @@ Elastic Observability là một phần của bộ công cụ Elastic Stack, đư
 - **Beats:** Là một nhóm các nhà thu thập dữ liệu nhẹ, mỗi loại Beat có chức năng thu thập dữ liệu đặc thù từ các nguồn khác nhau. Ví dụ, Filebeat thu thập log files, Metricbeat thu thập metrics từ hệ thống và các ứng dụng, Packetbeat phân tích lưu lượng mạng, và Heartbeat để kiểm tra tính khả dụng của dịch vụ.
 - **APM Server:** Là một phần mềm giám sát hiệu suất ứng dụng, nó thu thập dữ liệu từ các ứng dụng và gửi chúng đến Elasticsearch. Điều này cho phép người dùng theo dõi các yêu cầu của ứng dụng, phản ứng từ cơ sở dữ liệu và gọi dịch vụ bên ngoài.
 - **Kibana:** Được sử dụng để trực quan hóa và phân tích dữ liệu thu thập được. Kibana cung cấp dashboards sẵn có và khả năng tùy chỉnh mạnh mẽ, cho phép người dùng tạo ra các biểu đồ, bản đồ nhiệt và báo cáo tùy biến dựa trên dữ liệu thu được.
-- 
+
 ## Tính Năng của Elastic Observability
 - **Unified View:** Tập hợp dữ liệu từ logs, metrics và APM traces để cung cấp cái nhìn toàn diện về hệ thống. Điều này giúp nhận diện nhanh chóng nguyên nhân gốc rễ của các vấn đề.
 - **Real-time Monitoring and Alerting:** Cho phép thiết lập các cảnh báo dựa trên các điều kiện cụ thể. Người dùng có thể được thông báo ngay lập tức khi có sự kiện quan trọng hoặc khi hệ thống hoạt động không như mong đợi.
 - **Scalability:** Hệ thống có khả năng mở rộng cao, phù hợp cho cả doanh nghiệp nhỏ lẫn các tổ chức lớn. Elastic Observability có thể xử lý lượng dữ liệu lớn từ nhiều nguồn khác nhau một cách hiệu quả.
 - **Troubleshooting and Root Cause Analysis:** Cung cấp các công cụ để phân tích sâu và xác định nguyên nhân của các sự cố, từ đó giúp giảm thời gian để giải quyết vấn đề.
 - **Integration and Extensibility:** Dễ dàng tích hợp với nhiều công nghệ và dịch vụ khác, bao gồm cloud services, containers và orchestration platforms như Kubernetes, cho phép quản lý và giám sát trong một môi trường đa dạng.
+  
 **Elastic Observability** là một giải pháp mạnh mẽ cho việc giám sát và quản lý hiệu suất ứng dụng và hệ thống, giúp các tổ chức duy trì sự ổn định và hiệu quả của hạ tầng CNTT.
+
+## Sơ lược về APM Server và Beats
+
+### APM Server
+APM Server là một thành phần của Elastic Stack, chịu trách nhiệm thu thập dữ liệu từ các ứng dụng để phân tích hiệu suất (Application Performance Monitoring). Nó làm cầu nối giữa các ứng dụng và Elasticsearch, giúp lưu trữ và phân tích dữ liệu hiệu suất ứng dụng. APM Server thu thập các loại dữ liệu như requests, responses, exceptions, và transactions từ các ứng dụng để cung cấp cái nhìn tổng quan về hiệu suất và giúp xác định các vấn đề tiềm ẩn.
+
+*Các tính năng chính của APM Server:*
+- **Tự động phát hiện lỗi:** Phân tích các giao dịch và lỗi để xác định các vấn đề tiềm ẩn trong ứng dụng.
+- **Real-Time Profiling:** Giám sát hiệu suất của ứng dụng trong thời gian thực, cung cấp dữ liệu chi tiết về các hàm gọi và thời gian thực hiện.
+- **Hỗ trợ Ngôn Ngữ Đa Dạng:** Tương thích với nhiều ngôn ngữ lập trình phổ biến như Java, .NET, Ruby, Python, JavaScript, và Go.
+- **Tích hợp với Kibana:** Sử dụng Kibana để trực quan hóa dữ liệu APM, cho phép tạo các báo cáo và dashboard chi tiết về hiệu suất ứng dụng.
+
+### Beats
+Beats là một bộ sưu tập các data shippers đơn giản mà bạn có thể cài đặt làm agent trên các máy chủ để gửi các loại dữ liệu cụ thể đến Elasticsearch. Mỗi Beat được tối ưu hóa để thu thập một loại dữ liệu khác nhau, từ log files, metrics cho đến network data.
+
+*Các loại Beats phổ biến bao gồm:*
+- **Filebeat:** Thu thập và chuyển tiếp log files.
+- **Metricbeat:** Thu thập metrics từ hệ thống và các dịch vụ.
+- **Packetbeat:** Thu thập và phân tích lưu lượng mạng.
+- **Heartbeat:** Thực hiện các kiểm tra tính khả dụng của dịch vụ từ xa.
+- **Auditbeat:** Thu thập dữ liệu về truy cập và các thay đổi trên hệ thống tệp để giám sát bảo mật.
+- **Functionbeat:** Cho phép thu thập dữ liệu từ các dịch vụ đám mây như AWS Lambda.
+
+*Các tính năng chính của Beats:*
+- **Nhẹ và Hiệu Quả:** Các Beats được thiết kế để sử dụng ít tài nguyên hệ thống, cho phép chúng hoạt động hiệu quả trên các môi trường sản xuất.
+- **Tích hợp Sẵn:** Dễ dàng tích hợp với Elasticsearch và Logstash để phân tích và xử lý dữ liệu thêm.
+- **Cấu hình Linh Hoạt:** Cho phép tùy chỉnh đáng kể trong việc thu thập dữ liệu, bao gồm thời gian thu thập, loại dữ liệu và cách xử lý.
+- **Bảo Mật:** Hỗ trợ mã hóa SSL/TLS và xác thực để bảo đảm an toàn khi truyền dữ liệu.
+
+## Tài liệu tham khảo:
+- https://viblo.asia/p/elastic-stack-xay-dung-trien-khai-giam-sat-va-quan-ly-tap-trung-request-logs-theo-kien-truc-microservices-RnB5pAnDKPG
