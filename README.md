@@ -105,4 +105,5 @@ Kibana là một công cụ hiển thị trực quan và khám phá dữ liệu 
 - Dev Tools: Kibana cung cấp các công cụ dành cho nhà phát triển để thử nghiệm truy vấn và xem các tài liệu Elasticsearch.
 
 ## Tham khảo cài đặt cấu hình và sử dụng:
+- https://viblo.asia/p/elasticsearch-kibana-logstash-tong-quan-cai-dat-va-su-dung-RQqKLRn6l7z
 - https://viblo.asia/p/tich-hop-elasticsearch-va-kibana-vao-docker-compose-Az45bymqlxY
