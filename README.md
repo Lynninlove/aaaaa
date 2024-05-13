@@ -186,25 +186,25 @@ Beats là một bộ sưu tập các data shippers đơn giản mà bạn có th
   
 **Elastic Security** được thiết kế để hoạt động trên môi trường đám mây, tại chỗ và hybrid, đảm bảo linh hoạt và phù hợp với nhiều kiến trúc công nghệ. Nó là một phần quan trọng trong việc giúp các tổ chức phòng thủ chủ động chống lại các mối đe dọa an ninh mạng, giảm thiểu rủi ro và bảo vệ tài sản kỹ thuật số.
 
-
+# 4. Luồng hoạt động của ELK 
 Luồng hoạt động của ELK (Elasticsearch, Logstash, Kibana) bao gồm các bước từ thu thập dữ liệu cho đến việc trực quan hóa và phân tích dữ liệu. Dưới đây là mô tả chi tiết hơn về luồng hoạt động của ELK.
 
-### 1. Thu Thập Dữ Liệu (Data Collection)
-#### 1.1. Các nguồn dữ liệu
+## 4.1. Thu Thập Dữ Liệu (Data Collection)
+### 4.1.1. Các nguồn dữ liệu
 - **File Logs:** Các tệp nhật ký từ hệ thống, ứng dụng, hoặc máy chủ.
 - **APM (Application Performance Monitoring):** Dữ liệu về hiệu suất của ứng dụng.
 - **Metrics:** Số liệu về tài nguyên hệ thống, hiệu suất dịch vụ.
 - **Database:** Dữ liệu từ các cơ sở dữ liệu khác nhau.
 - **Custom Applications:** Dữ liệu từ các ứng dụng tùy chỉnh qua API.
 
-#### 1.2. Filebeat
+### 4.1.2. Filebeat
 - **Mục đích:** Gửi log từ các tệp đến Logstash hoặc Elasticsearch.
 - **Hoạt động:**
   - **Prospector:** Khám phá tệp nhật ký.
   - **Harvester:** Đọc dữ liệu từ từng tệp.
   - **Module:** Bộ thu thập dữ liệu cài sẵn cho các dịch vụ phổ biến như NGINX, Apache.
 
-#### 1.3. Logstash
+### 4.1.3. Logstash
 - **Mục đích:** Thu thập, biến đổi và vận chuyển dữ liệu.
 - **Hoạt động:**
   - **Pipeline:** Mỗi pipeline có cấu hình riêng.
@@ -216,8 +216,8 @@ Luồng hoạt động của ELK (Elasticsearch, Logstash, Kibana) bao gồm cá
   - **Filter Plugins:** Xử lý dữ liệu (Grok, Date, GeoIP).
   - **Output Plugins:** Gửi dữ liệu (Elasticsearch, Email, HTTP).
 
-### 2. Tiếp Nhận Dữ Liệu (Data Ingestion)
-#### 2.1. Elasticsearch
+## 4.2. Tiếp Nhận Dữ Liệu (Data Ingestion)
+### 4.2.1. Elasticsearch
 - **Mục đích:** Lưu trữ, lập chỉ mục, và cung cấp khả năng tìm kiếm.
 - **Hoạt động:**
   - **Cluster:** Cụm các node để phân tán dữ liệu.
@@ -229,19 +229,19 @@ Luồng hoạt động của ELK (Elasticsearch, Logstash, Kibana) bao gồm cá
   - **Mapping:** Xác định cấu trúc dữ liệu và cách lưu trữ.
   - **Analyzers:** Phân tích dữ liệu văn bản trước khi lập chỉ mục.
 
-### 3. Tìm Kiếm và Phân Tích (Search & Analytics)
-#### 3.1. Tìm kiếm (Search)
+## 4.3. Tìm Kiếm và Phân Tích (Search & Analytics)
+### 4.3.1. Tìm kiếm (Search)
 - **Query DSL:** Ngôn ngữ truy vấn Elasticsearch (Bool, Term, Range).
 - **Full-Text Search:** Tìm kiếm toàn văn bản.
 - **Suggesters:** Đề xuất truy vấn hoặc chỉnh sửa từ sai.
 
-#### 3.2. Phân tích (Aggregation)
+### 4.3.2. Phân tích (Aggregation)
 - **Metrics Aggregations:** Tính toán số liệu (min, max, avg, sum, count).
 - **Bucket Aggregations:** Nhóm tài liệu vào các bucket theo tiêu chí.
 - **Pipeline Aggregations:** Xử lý kết quả của các aggregations khác.
 
-### 4. Trực Quan Hóa (Data Visualization)
-#### 4.1. Kibana
+## 4.4. Trực Quan Hóa (Data Visualization)
+### 4.4.1. Kibana
 - **Mục đích:** Trực quan hóa và quản lý dữ liệu trong Elasticsearch.
 - **Hoạt động:**
   - **Discover:** Khám phá dữ liệu trực tiếp.
@@ -249,51 +249,30 @@ Luồng hoạt động của ELK (Elasticsearch, Logstash, Kibana) bao gồm cá
   - **Dashboard:** Tạo bảng điều khiển tổng quan.
   - **Management:** Quản lý index patterns, alerts, ML jobs.
 
-#### 4.2. Alerting (Cảnh Báo)
+### 4.4.2. Alerting (Cảnh Báo)
 - **Watchers:** Định nghĩa các cảnh báo dựa trên kết quả tìm kiếm.
 - **Actions:** Thực hiện hành động khi cảnh báo được kích hoạt (gửi email, webhook).
 
-### 5. Quản Lý và Bảo Mật (Management & Security)
-#### 5.1. Security (Bảo Mật)
+## 4.5. Quản Lý và Bảo Mật (Management & Security)
+### 4.5.1. Security (Bảo Mật)
 - **Authentication:** Xác thực người dùng.
 - **Authorization:** Phân quyền truy cập.
 - **Encryption:** Mã hóa dữ liệu trong quá trình truyền tải và lưu trữ.
 
-#### 5.2. Index Lifecycle Management (ILM)
+### 4.5.2. Index Lifecycle Management (ILM)
 - **Phân đoạn chu kỳ:** Quản lý vòng đời chỉ mục (Hot, Warm, Cold, Delete).
   
-### Luồng Hoạt Động Tổng Quan
-1. **Filebeat/Ứng dụng khác** → Logstash/Filebeat → Elasticsearch → Kibana
+## 4.6. Luồng Hoạt Động Tổng Quan
+**Filebeat/Ứng dụng khác** → Logstash/Filebeat → Elasticsearch → Kibana
    - Logstash nhận dữ liệu từ các tác nhân và gửi đến Elasticsearch.
-2. **Elasticsearch**: Lập chỉ mục, lưu trữ và cung cấp tìm kiếm nhanh chóng.
-3. **Kibana**: Trực quan hóa và cung cấp công cụ phân tích.
-
-### Sơ Đồ Luồng Dữ Liệu ELK
-```plaintext
-Filebeat/Ứng dụng khác
-   \______________/
-        |      
-       Logstash (Filter)
-        |
-    Elasticsearch (Index, Query, Aggregation)
-        |
-     Kibana (Visualization, Alerts)
-```
-
-### Ứng Dụng Thực Tiễn
-- **Log Management:** Theo dõi, phân tích log hệ thống.
-- **Application Monitoring:** Giám sát hiệu suất và lỗi ứng dụng.
-- **Security Analytics:** Phân tích dữ liệu bảo mật.
+**Elasticsearch**: Lập chỉ mục, lưu trữ và cung cấp tìm kiếm nhanh chóng.
+**Kibana**: Trực quan hóa và cung cấp công cụ phân tích.
 
 
-
-
-—--------------------------
-
-
+# 5. Tiếp nhận gói tin của ELK
 Logstash có khả năng nhận các gói tin (packet) trực tiếp thông qua một số giao thức và plugin khác nhau. Cụ thể, Logstash hỗ trợ nhiều plugin input, bao gồm cả các plugin cho phép nhận các packet trực tiếp qua giao thức mạng. Dưới đây là một số plugin chính có thể sử dụng để nhận packet trực tiếp:
 
-### 1. **TCP Input Plugin**
+## 5.1. **TCP Input Plugin**
 - **Mô tả:** Nhận các gói tin TCP trực tiếp.
 - **Cấu hình:**
 ```yaml
@@ -305,7 +284,7 @@ input {
 }
 ```
 
-### 2. **UDP Input Plugin**
+## 5.2. **UDP Input Plugin**
 - **Mô tả:** Nhận các gói tin UDP trực tiếp.
 - **Cấu hình:**
 ```yaml
@@ -317,7 +296,7 @@ input {
 }
 ```
 
-### 3. **Beats Input Plugin**
+## 5.3. **Beats Input Plugin**
 - **Mô tả:** Nhận dữ liệu từ các Beats Agent (Filebeat, Metricbeat, Packetbeat).
 - **Cấu hình:**
 ```yaml
@@ -328,7 +307,7 @@ input {
 }
 ```
 
-### 4. **Syslog Input Plugin**
+## 5.4. **Syslog Input Plugin**
 - **Mô tả:** Nhận các packet nhật ký Syslog từ các hệ thống khác qua TCP hoặc UDP.
 - **Cấu hình:**
 ```yaml
@@ -341,7 +320,7 @@ input {
 }
 ```
 
-### 5. **HTTP Input Plugin**
+## 5.5. **HTTP Input Plugin**
 - **Mô tả:** Nhận các packet dữ liệu qua HTTP.
 - **Cấu hình:**
 ```yaml
@@ -353,7 +332,7 @@ input {
 }
 ```
 
-### 6. **Kafka Input Plugin**
+## 5.6. **Kafka Input Plugin**
 - **Mô tả:** Nhận packet từ Apache Kafka, đặc biệt hữu ích khi sử dụng Kafka làm hàng đợi trung gian.
 - **Cấu hình:**
 ```yaml
@@ -366,7 +345,7 @@ input {
 }
 ```
 
-### 7. **Packetbeat Integration**
+## 5.7. **Packetbeat Integration**
 - **Mô tả:** Packetbeat là một tác nhân trong Elastic Beats Suite giúp thu thập packet từ mạng và gửi trực tiếp đến Logstash hoặc Elasticsearch.
 - **Cấu hình Packetbeat để gửi đến Logstash:**
 ```yaml
@@ -381,16 +360,10 @@ input {
   }
 }
 ```
-
-### Tổng Kết
-Logstash có thể nhận các packet trực tiếp từ nhiều giao thức và dịch vụ khác nhau nhờ sự hỗ trợ từ các plugin input. Bằng cách sử dụng đúng plugin input, Logstash có thể nhận packet trực tiếp từ mạng hoặc từ các tác nhân trung gian như Filebeat, Packetbeat.
-
-
-—--------------------------------------------------------------
-
+## 5.8. **Đánh giá hiệu năng**
 Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau tùy thuộc vào nhiều yếu tố như loại giao thức, khối lượng dữ liệu, cấu hình phần cứng, và cách triển khai. Dưới đây là một số đánh giá hiệu năng dựa trên các yếu tố này:
 
-### 1. **TCP Input Plugin**
+### 5.8.1. **TCP Input Plugin**
 - **Hiệu suất:** Trung bình đến Cao
 - **Lợi ích:**
   - Kết nối ổn định và hỗ trợ tải trọng lớn.
@@ -401,7 +374,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Khả năng chịu tải thấp hơn so với UDP.
 - **Ứng dụng:** Dữ liệu nhạy cảm cần độ tin cậy cao như nhật ký hệ thống, ứng dụng.
 
-### 2. **UDP Input Plugin**
+### 5.8.2. **UDP Input Plugin**
 - **Hiệu suất:** Cao
 - **Lợi ích:**
   - Giao thức không kết nối nên có thể chịu tải cao hơn.
@@ -412,7 +385,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Khó kiểm soát mất dữ liệu.
 - **Ứng dụng:** Nhật ký mạng, dữ liệu không nhạy cảm, yêu cầu tốc độ cao.
 
-### 3. **Beats Input Plugin**
+### 5.8.3. **Beats Input Plugin**
 - **Hiệu suất:** Trung bình đến Cao
 - **Lợi ích:**
   - Hỗ trợ các Beats Agents (Filebeat, Metricbeat, Packetbeat, v.v.).
@@ -422,7 +395,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Có thể gặp phải vấn đề về hiệu suất nếu quá nhiều tác nhân gửi đồng thời.
 - **Ứng dụng:** Nhật ký hệ thống, ứng dụng, số liệu hiệu suất, mạng.
 
-### 4. **Syslog Input Plugin**
+### 5.8.4. **Syslog Input Plugin**
 - **Hiệu suất:** Trung bình
 - **Lợi ích:**
   - Phù hợp cho các môi trường truyền thống sử dụng Syslog.
@@ -431,7 +404,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Hiệu suất giảm khi xử lý đồng thời nhiều packet.
 - **Ứng dụng:** Nhật ký hệ thống Linux, thiết bị mạng.
 
-### 5. **HTTP Input Plugin**
+### 5.8.5. **HTTP Input Plugin**
 - **Hiệu suất:** Trung bình đến Cao
 - **Lợi ích:**
   - Giao thức HTTP phổ biến dễ dàng tích hợp.
@@ -441,7 +414,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Yêu cầu cài đặt và cấu hình phù hợp để đảm bảo an ninh.
 - **Ứng dụng:** Webhooks, dữ liệu ứng dụng tùy chỉnh.
 
-### 6. **Kafka Input Plugin**
+### 5.8.6. **Kafka Input Plugin**
 - **Hiệu suất:** Cao
 - **Lợi ích:**
   - Khả năng chịu tải và phân tán cao.
@@ -452,7 +425,7 @@ Hiệu năng của từng phương thức đầu vào Logstash sẽ khác nhau t
   - Cấu hình phức tạp hơn.
 - **Ứng dụng:** Dữ liệu luồng (streaming data), khối lượng dữ liệu lớn.
 
-### 7. **Packetbeat Integration**
+### 5.8.7. **Packetbeat Integration**
 - **Hiệu suất:** Trung bình đến Cao
 - **Lợi ích:**
   - Tối ưu hóa cho phân tích mạng với hiệu suất tốt.
